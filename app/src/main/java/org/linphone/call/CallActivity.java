@@ -130,6 +130,7 @@ public class CallActivity extends LinphoneGenericActivity
     private CoreListener mListener;
     private AndroidAudioManager mAudioManager;
     private VideoZoomHelper mZoomHelper;
+    private boolean isCallButtonVisible = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -714,7 +715,7 @@ public class CallActivity extends LinphoneGenericActivity
     public void onPictureInPictureModeChanged(
             boolean isInPictureInPictureMode, Configuration newConfig) {
         if (isInPictureInPictureMode) {
-            updateButtonsVisibility(false);
+            updateButtonsVisibility(true);
         }
     }
 
@@ -867,8 +868,15 @@ public class CallActivity extends LinphoneGenericActivity
     }
 
     private void makeButtonsVisibleTemporary() {
-        updateButtonsVisibility(true);
-        resetCallControlsHidingTimer();
+        if (isCallButtonVisible) {
+            updateButtonsVisibility(false);
+            isCallButtonVisible = false;
+        } else {
+            updateButtonsVisibility(true);
+            isCallButtonVisible = true;
+        }
+
+        // resetCallControlsHidingTimer();
     }
 
     // VIDEO RELATED
@@ -878,7 +886,7 @@ public class CallActivity extends LinphoneGenericActivity
         mRemoteVideo.setVisibility(videoEnabled ? View.VISIBLE : View.GONE);
         mLocalPreview.setVisibility(videoEnabled ? View.VISIBLE : View.GONE);
         mSwitchCamera.setVisibility(videoEnabled ? View.VISIBLE : View.INVISIBLE);
-        updateButtonsVisibility(!videoEnabled);
+        updateButtonsVisibility(true);
         mVideo.setSelected(videoEnabled);
         LinphoneManager.getInstance().enableProximitySensing(!videoEnabled);
 

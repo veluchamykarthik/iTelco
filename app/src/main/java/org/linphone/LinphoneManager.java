@@ -254,7 +254,7 @@ public class LinphoneManager implements SensorEventListener {
                                                             }
                                                         }
                                                     });
-                                            builder.show();
+                                            // builder.show();
                                         }
                                     },
                                     1000);

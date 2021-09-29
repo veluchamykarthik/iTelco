@@ -113,7 +113,8 @@ public class DialerActivity extends MainActivity implements AddressText.AddressC
                     // Required starting Android 9 to be able to start a foreground service
                     "android.permission.FOREGROUND_SERVICE",
                     Manifest.permission.WRITE_CONTACTS,
-                    Manifest.permission.READ_CONTACTS
+                    Manifest.permission.READ_CONTACTS,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
                 };
 
         mIsTransfer = false;
