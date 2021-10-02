@@ -126,14 +126,14 @@ public class StatusBarFragment extends Fragment {
                             } catch (NumberFormatException nfe) {
                                 Log.e("[Status Fragment] " + nfe);
                             }
-                            if (unreadCount > 0) {
+                           /* if (unreadCount > 0) {
                                 mVoicemailCount.setText(String.valueOf(unreadCount));
                                 mVoicemail.setVisibility(View.VISIBLE);
                                 mVoicemailCount.setVisibility(View.VISIBLE);
                             } else {
                                 mVoicemail.setVisibility(View.GONE);
                                 mVoicemailCount.setVisibility(View.GONE);
-                            }
+                            }*/
                         }
                     }
                 };
@@ -178,7 +178,7 @@ public class StatusBarFragment extends Fragment {
     private void populateSliderContent() {
         Core core = LinphoneManager.getCore();
         if (core != null) {
-            mVoicemailCount.setVisibility(View.VISIBLE);
+           // mVoicemailCount.setVisibility(View.VISIBLE);
 
             if (core.getProxyConfigList().length == 0) {
                 showNoAccountConfigured();
